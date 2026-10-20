@@ -8,6 +8,18 @@ changes.
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-10-20
+
+### Changed
+
+- The plugin moves to Atriametal: the package is now `atriametal/sylius-spam-protection-plugin`, and its namespace
+  `Atriametal\SyliusSpamProtectionPlugin`. Replace `florentingarnier/sylius-spam-protection-plugin` in your `composer.json` and
+  `FlorentinGarnier\SyliusSpamProtectionPlugin\FlorentinGarnierSyliusSpamProtectionPlugin` in your
+  `config/bundles.php` with `Atriametal\SyliusSpamProtectionPlugin\AtriametalSyliusSpamProtectionPlugin`.
+- The blocks of the template events and Twig hooks are renamed `atriametal_spam_protection` and
+  `atriametal_spam_protection_error`: rename them where your configuration disables or moves them.
+- The template namespace is now `@AtriametalSyliusSpamProtectionPlugin`.
+
 ## [0.3.1] - 2026-10-08
 
 ### Changed
@@ -67,9 +79,10 @@ changes.
   through the shop template events. Supports Sylius 1.12 to 1.14 and requires
   florentingarnier/spam-protection-bundle 0.2.
 
-[Unreleased]: https://github.com/FlorentinGarnier/sylius-spam-protection-plugin/compare/v0.3.1...HEAD
-[0.3.1]: https://github.com/FlorentinGarnier/sylius-spam-protection-plugin/compare/v0.3.0...v0.3.1
-[0.3.0]: https://github.com/FlorentinGarnier/sylius-spam-protection-plugin/compare/v0.2.1...v0.3.0
-[0.2.1]: https://github.com/FlorentinGarnier/sylius-spam-protection-plugin/compare/v0.2.0...v0.2.1
-[0.2.0]: https://github.com/FlorentinGarnier/sylius-spam-protection-plugin/compare/v0.1.0...v0.2.0
-[0.1.0]: https://github.com/FlorentinGarnier/sylius-spam-protection-plugin/releases/tag/v0.1.0
+[Unreleased]: https://github.com/atriametal/sylius-spam-protection-plugin/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/atriametal/sylius-spam-protection-plugin/compare/v0.3.1...v0.4.0
+[0.3.1]: https://github.com/atriametal/sylius-spam-protection-plugin/compare/v0.3.0...v0.3.1
+[0.3.0]: https://github.com/atriametal/sylius-spam-protection-plugin/compare/v0.2.1...v0.3.0
+[0.2.1]: https://github.com/atriametal/sylius-spam-protection-plugin/compare/v0.2.0...v0.2.1
+[0.2.0]: https://github.com/atriametal/sylius-spam-protection-plugin/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/atriametal/sylius-spam-protection-plugin/releases/tag/v0.1.0

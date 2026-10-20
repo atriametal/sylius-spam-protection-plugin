@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the florentingarnier/sylius-spam-protection-plugin package.
+ * This file is part of the atriametal/sylius-spam-protection-plugin package.
  *
- * (c) Florentin Garnier
+ * (c) Atriametal <contact@kemp.fr>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\FlorentinGarnier\SyliusSpamProtectionPlugin\Unit\Templates;
+namespace Tests\Atriametal\SyliusSpamProtectionPlugin\Unit\Templates;
 
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\TestCase;
@@ -36,7 +36,7 @@ final class SpamProtectionTemplateTest extends TestCase
 {
     private const FIELD = 'name="form[spam_protection]"';
 
-    private const PLUGIN_TEMPLATE = '{{ include("@FlorentinGarnierSyliusSpamProtectionPlugin/spam_protection.html.twig") }}';
+    private const PLUGIN_TEMPLATE = '{{ include("@AtriametalSyliusSpamProtectionPlugin/spam_protection.html.twig") }}';
 
     public function testItRendersTheFieldWhenTheThemeDoesNot(): void
     {
@@ -58,7 +58,7 @@ final class SpamProtectionTemplateTest extends TestCase
     private function render(string $page, bool $inHook = false): string
     {
         $templates = new FilesystemLoader(\dirname((string) (new \ReflectionClass(AppVariable::class))->getFileName()) . '/Resources/views/Form');
-        $templates->addPath(\dirname(__DIR__, 3) . '/templates', 'FlorentinGarnierSyliusSpamProtectionPlugin');
+        $templates->addPath(\dirname(__DIR__, 3) . '/templates', 'AtriametalSyliusSpamProtectionPlugin');
 
         $twig = new Environment(new ChainLoader([new ArrayLoader(['page.html.twig' => $page]), $templates]), ['strict_variables' => true]);
         $twig->addExtension(new FormExtension());

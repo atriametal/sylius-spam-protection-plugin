@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the florentingarnier/sylius-spam-protection-plugin package.
+ * This file is part of the atriametal/sylius-spam-protection-plugin package.
  *
- * (c) Florentin Garnier
+ * (c) Atriametal <contact@kemp.fr>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,13 +11,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\FlorentinGarnier\SyliusSpamProtectionPlugin\Unit\Form\Extension;
+namespace Tests\Atriametal\SyliusSpamProtectionPlugin\Unit\Form\Extension;
 
+use Atriametal\SyliusSpamProtectionPlugin\Form\Extension\LiveComponentRenderTypeExtension;
 use FlorentinGarnier\SpamProtection\IpReputation\IpReputation;
 use FlorentinGarnier\SpamProtection\IpReputation\IpReputationList;
 use FlorentinGarnier\SpamProtection\SpamProtection;
 use FlorentinGarnier\SpamProtectionBundle\Form\SpamProtectionType;
-use FlorentinGarnier\SyliusSpamProtectionPlugin\Form\Extension\LiveComponentRenderTypeExtension;
 use PHPUnit\Framework\Attributes\CoversClass;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Component\Form\FormExtensionInterface;

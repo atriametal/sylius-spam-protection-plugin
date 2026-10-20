@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the florentingarnier/sylius-spam-protection-plugin package.
+ * This file is part of the atriametal/sylius-spam-protection-plugin package.
  *
- * (c) Florentin Garnier
+ * (c) Atriametal <contact@kemp.fr>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,30 +11,30 @@
 
 declare(strict_types=1);
 
-namespace Tests\FlorentinGarnier\SyliusSpamProtectionPlugin\Unit\DependencyInjection;
+namespace Tests\Atriametal\SyliusSpamProtectionPlugin\Unit\DependencyInjection;
 
-use FlorentinGarnier\SyliusSpamProtectionPlugin\DependencyInjection\FlorentinGarnierSyliusSpamProtectionExtension;
-use FlorentinGarnier\SyliusSpamProtectionPlugin\Form\Extension\ContactTypeExtension;
-use FlorentinGarnier\SyliusSpamProtectionPlugin\Form\Extension\CustomerRegistrationTypeExtension;
-use FlorentinGarnier\SyliusSpamProtectionPlugin\Form\Extension\LiveComponentRenderTypeExtension;
-use FlorentinGarnier\SyliusSpamProtectionPlugin\Form\Extension\UserRequestPasswordResetTypeExtension;
+use Atriametal\SyliusSpamProtectionPlugin\DependencyInjection\AtriametalSyliusSpamProtectionExtension;
+use Atriametal\SyliusSpamProtectionPlugin\Form\Extension\ContactTypeExtension;
+use Atriametal\SyliusSpamProtectionPlugin\Form\Extension\CustomerRegistrationTypeExtension;
+use Atriametal\SyliusSpamProtectionPlugin\Form\Extension\LiveComponentRenderTypeExtension;
+use Atriametal\SyliusSpamProtectionPlugin\Form\Extension\UserRequestPasswordResetTypeExtension;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Sylius\Bundle\CoreBundle\SyliusCoreBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-#[CoversClass(FlorentinGarnierSyliusSpamProtectionExtension::class)]
-final class FlorentinGarnierSyliusSpamProtectionExtensionTest extends TestCase
+#[CoversClass(AtriametalSyliusSpamProtectionExtension::class)]
+final class AtriametalSyliusSpamProtectionExtensionTest extends TestCase
 {
-    private const TEMPLATE = '@FlorentinGarnierSyliusSpamProtectionPlugin/spam_protection.html.twig';
+    private const TEMPLATE = '@AtriametalSyliusSpamProtectionPlugin/spam_protection.html.twig';
 
-    private const ERROR_TEMPLATE = '@FlorentinGarnierSyliusSpamProtectionPlugin/spam_protection_error.html.twig';
+    private const ERROR_TEMPLATE = '@AtriametalSyliusSpamProtectionPlugin/spam_protection_error.html.twig';
 
     public function testItRegistersTheFormTypeExtensions(): void
     {
         $container = new ContainerBuilder();
 
-        (new FlorentinGarnierSyliusSpamProtectionExtension())->load([], $container);
+        (new AtriametalSyliusSpamProtectionExtension())->load([], $container);
 
         foreach ([ContactTypeExtension::class, CustomerRegistrationTypeExtension::class, UserRequestPasswordResetTypeExtension::class, LiveComponentRenderTypeExtension::class] as $extension) {
             self::assertTrue($container->getDefinition($extension)->hasTag('form.type_extension'), $extension);
@@ -52,12 +52,12 @@ final class FlorentinGarnierSyliusSpamProtectionExtensionTest extends TestCase
 
         $container = new ContainerBuilder();
 
-        (new FlorentinGarnierSyliusSpamProtectionExtension())->prepend($container);
+        (new AtriametalSyliusSpamProtectionExtension())->prepend($container);
 
         $config = $container->getExtensionConfig('sylius_ui');
         foreach (['sylius.shop.contact.request.form', 'sylius.shop.register.form', 'sylius.shop.request_password_reset_token.form'] as $event) {
-            self::assertSame(self::TEMPLATE, self::get($config, 0, 'events', $event, 'blocks', 'florentin_garnier_spam_protection', 'template'), $event);
-            self::assertSame(self::ERROR_TEMPLATE, self::get($config, 0, 'events', $event, 'blocks', 'florentin_garnier_spam_protection_error', 'template'), $event);
+            self::assertSame(self::TEMPLATE, self::get($config, 0, 'events', $event, 'blocks', 'atriametal_spam_protection', 'template'), $event);
+            self::assertSame(self::ERROR_TEMPLATE, self::get($config, 0, 'events', $event, 'blocks', 'atriametal_spam_protection_error', 'template'), $event);
         }
     }
 
@@ -72,12 +72,12 @@ final class FlorentinGarnierSyliusSpamProtectionExtensionTest extends TestCase
 
         $container = new ContainerBuilder();
 
-        (new FlorentinGarnierSyliusSpamProtectionExtension())->prepend($container);
+        (new AtriametalSyliusSpamProtectionExtension())->prepend($container);
 
         $config = $container->getExtensionConfig('sylius_twig_hooks');
         foreach (['sylius_shop.contact.contact_request.content.form', 'sylius_shop.account.register.content.form', 'sylius_shop.account.forgotten_password.content.form_container.form'] as $hook) {
-            self::assertSame(self::TEMPLATE, self::get($config, 0, 'hooks', $hook, 'florentin_garnier_spam_protection', 'template'), $hook);
-            self::assertSame(self::ERROR_TEMPLATE, self::get($config, 0, 'hooks', $hook, 'florentin_garnier_spam_protection_error', 'template'), $hook);
+            self::assertSame(self::TEMPLATE, self::get($config, 0, 'hooks', $hook, 'atriametal_spam_protection', 'template'), $hook);
+            self::assertSame(self::ERROR_TEMPLATE, self::get($config, 0, 'hooks', $hook, 'atriametal_spam_protection_error', 'template'), $hook);
         }
         self::assertSame([], $container->getExtensionConfig('sylius_ui'));
     }

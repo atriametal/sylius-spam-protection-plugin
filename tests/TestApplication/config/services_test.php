@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the florentingarnier/sylius-spam-protection-plugin package.
+ * This file is part of the atriametal/sylius-spam-protection-plugin package.
  *
- * (c) Florentin Garnier
+ * (c) Atriametal <contact@kemp.fr>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -22,6 +22,6 @@ return static function (ContainerConfigurator $container): void {
         // Sylius 2.3 ships its Behat services in PHP, earlier versions in XML (which Symfony 8 can no longer load).
         $syliusBehatServices = \dirname(__DIR__, 3) . '/vendor/sylius/sylius/src/Sylius/Behat/Resources/config/services';
         $container->import(file_exists($syliusBehatServices . '.php') ? $syliusBehatServices . '.php' : $syliusBehatServices . '.xml');
-        $container->import('@FlorentinGarnierSyliusSpamProtectionPlugin/tests/Behat/Resources/services.php');
+        $container->import('@AtriametalSyliusSpamProtectionPlugin/tests/Behat/Resources/services.php');
     }
 };

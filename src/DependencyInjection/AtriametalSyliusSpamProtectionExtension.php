@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the florentingarnier/sylius-spam-protection-plugin package.
+ * This file is part of the atriametal/sylius-spam-protection-plugin package.
  *
- * (c) Florentin Garnier
+ * (c) Atriametal <contact@kemp.fr>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace FlorentinGarnier\SyliusSpamProtectionPlugin\DependencyInjection;
+namespace Atriametal\SyliusSpamProtectionPlugin\DependencyInjection;
 
 use Sylius\Bundle\CoreBundle\SyliusCoreBundle;
 use Symfony\Component\Config\FileLocator;
@@ -20,11 +20,11 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 
-final class FlorentinGarnierSyliusSpamProtectionExtension extends Extension implements PrependExtensionInterface
+final class AtriametalSyliusSpamProtectionExtension extends Extension implements PrependExtensionInterface
 {
     private const BLOCKS = [
-        'florentin_garnier_spam_protection_error' => ['template' => '@FlorentinGarnierSyliusSpamProtectionPlugin/spam_protection_error.html.twig', 'priority' => 1000],
-        'florentin_garnier_spam_protection' => ['template' => '@FlorentinGarnierSyliusSpamProtectionPlugin/spam_protection.html.twig', 'priority' => -100],
+        'atriametal_spam_protection_error' => ['template' => '@AtriametalSyliusSpamProtectionPlugin/spam_protection_error.html.twig', 'priority' => 1000],
+        'atriametal_spam_protection' => ['template' => '@AtriametalSyliusSpamProtectionPlugin/spam_protection.html.twig', 'priority' => -100],
     ];
 
     /** Sylius 1 */

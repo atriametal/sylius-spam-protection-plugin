@@ -5,7 +5,7 @@ Thank you for considering a contribution! By participating in this project, you 
 
 ## Reporting a bug or suggesting a feature
 
-Open an issue with the [bug report or feature request form](https://github.com/FlorentinGarnier/sylius-spam-protection-plugin/issues/new/choose). For security issues, do **not** open an issue: follow
+Open an issue with the [bug report or feature request form](https://github.com/atriametal/sylius-spam-protection-plugin/issues/new/choose). For security issues, do **not** open an issue: follow
 [SECURITY.md](SECURITY.md).
 
 ## Submitting a pull request
