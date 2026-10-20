@@ -1,19 +1,20 @@
 {
-    "name": "florentingarnier/sylius-spam-protection-plugin",
+    "name": "atriametal/sylius-spam-protection-plugin",
     "description": "Protects the Sylius shop contact, registration and password reset forms with florentingarnier/spam-protection-bundle.",
     "type": "sylius-plugin",
     "license": "MIT",
-    "homepage": "https://github.com/FlorentinGarnier/sylius-spam-protection-plugin",
+    "homepage": "https://github.com/atriametal/sylius-spam-protection-plugin",
     "authors": [
         {
-            "name": "Florentin Garnier",
-            "homepage": "https://github.com/FlorentinGarnier"
+            "name": "Atriametal",
+            "email": "contact@kemp.fr",
+            "homepage": "https://github.com/atriametal"
         }
     ],
     "support": {
-        "issues": "https://github.com/FlorentinGarnier/sylius-spam-protection-plugin/issues",
-        "source": "https://github.com/FlorentinGarnier/sylius-spam-protection-plugin",
-        "security": "https://github.com/FlorentinGarnier/sylius-spam-protection-plugin/security/policy"
+        "issues": "https://github.com/atriametal/sylius-spam-protection-plugin/issues",
+        "source": "https://github.com/atriametal/sylius-spam-protection-plugin",
+        "security": "https://github.com/atriametal/sylius-spam-protection-plugin/security/policy"
     },
     "keywords": [
         "sylius",
@@ -57,12 +58,12 @@
     },
     "autoload": {
         "psr-4": {
-            "FlorentinGarnier\\SyliusSpamProtectionPlugin\\": "src/"
+            "Atriametal\\SyliusSpamProtectionPlugin\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\FlorentinGarnier\\SyliusSpamProtectionPlugin\\": "tests/"
+            "Tests\\Atriametal\\SyliusSpamProtectionPlugin\\": "tests/"
         }
     },
     "prefer-stable": true,

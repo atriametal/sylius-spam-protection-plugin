@@ -11,7 +11,7 @@ body:
     id: package-version
     attributes:
       label: Package version
-      description: Output of `composer show florentingarnier/sylius-spam-protection-plugin | grep versions`
+      description: Output of `composer show atriametal/sylius-spam-protection-plugin | grep versions`
       placeholder: "0.1.2"
     validations:
       required: true

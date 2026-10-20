@@ -1,8 +1,8 @@
 # Sylius Spam Protection Plugin
 
-[![CI](https://github.com/FlorentinGarnier/sylius-spam-protection-plugin/actions/workflows/ci.yml/badge.svg)](https://github.com/FlorentinGarnier/sylius-spam-protection-plugin/actions/workflows/ci.yml)
-[![Latest Version](https://img.shields.io/packagist/v/florentingarnier/sylius-spam-protection-plugin.svg)](https://packagist.org/packages/florentingarnier/sylius-spam-protection-plugin)
-[![Total Downloads](https://img.shields.io/packagist/dt/florentingarnier/sylius-spam-protection-plugin.svg)](https://packagist.org/packages/florentingarnier/sylius-spam-protection-plugin)
+[![CI](https://github.com/atriametal/sylius-spam-protection-plugin/actions/workflows/ci.yml/badge.svg)](https://github.com/atriametal/sylius-spam-protection-plugin/actions/workflows/ci.yml)
+[![Latest Version](https://img.shields.io/packagist/v/atriametal/sylius-spam-protection-plugin.svg)](https://packagist.org/packages/atriametal/sylius-spam-protection-plugin)
+[![Total Downloads](https://img.shields.io/packagist/dt/atriametal/sylius-spam-protection-plugin.svg)](https://packagist.org/packages/atriametal/sylius-spam-protection-plugin)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![Sylius](https://img.shields.io/badge/sylius-1.14%20%7C%202.x-1abb9c.svg)
 
@@ -17,6 +17,12 @@ and gibberish detection.
 | Contact (`ContactType`) | `contact` | `message` |
 | Registration (`CustomerRegistrationType`) | `registration` | — |
 | Password reset request (`UserRequestPasswordResetType`) | `password_reset` | — |
+
+## Upgrading from florentingarnier/sylius-spam-protection-plugin
+
+The plugin moved to Atriametal in 0.4.0: require `atriametal/sylius-spam-protection-plugin` instead, and follow
+the [CHANGELOG](CHANGELOG.md#040---2026-10-20) to rename the bundle class and the blocks. The previous package is
+abandoned.
 
 ## Requirements
 
@@ -50,7 +56,7 @@ consume the token and count as rejected attempts. Live actions are still verifie
 1. Require the plugin:
 
    ```bash
-   composer require florentingarnier/sylius-spam-protection-plugin
+   composer require atriametal/sylius-spam-protection-plugin
    ```
 
 2. If you do not use Symfony Flex, enable the bundle and the plugin:
@@ -60,7 +66,7 @@ consume the token and count as rejected attempts. Live actions are still verifie
    return [
        // ...
        FlorentinGarnier\SpamProtectionBundle\FlorentinGarnierSpamProtectionBundle::class => ['all' => true],
-       FlorentinGarnier\SyliusSpamProtectionPlugin\FlorentinGarnierSyliusSpamProtectionPlugin::class => ['all' => true],
+       Atriametal\SyliusSpamProtectionPlugin\AtriametalSyliusSpamProtectionPlugin::class => ['all' => true],
    ];
    ```
 
@@ -93,7 +99,7 @@ and in the forms' Twig hooks on Sylius 2:
 - `sylius_shop.account.forgotten_password.content.form_container.form`
 
 The Sylius shop does not render the errors of these forms, so the plugin also renders its rejection message at the
-top of each form, with a priority of 1000 (block `florentin_garnier_spam_protection_error`). If your theme renders
+top of each form, with a priority of 1000 (block `atriametal_spam_protection_error`). If your theme renders
 the errors of a form itself (`{{ form_errors(form) }}`), remove this block from its event or hook, as shown below,
 so that the message appears once.
 
@@ -105,7 +111,7 @@ If your theme overrides these templates:
 - **It calls neither:** render the field in the form with `{{ form_row(form.spam_protection) }}`.
 
 To remove a block from an event or a hook, for example when your theme renders the field elsewhere
-(`florentin_garnier_spam_protection`) or the errors of the form (`florentin_garnier_spam_protection_error`):
+(`atriametal_spam_protection`) or the errors of the form (`atriametal_spam_protection_error`):
 
 ```yaml
 # Sylius 1: config/packages/sylius_ui.yaml
@@ -113,7 +119,7 @@ sylius_ui:
     events:
         sylius.shop.contact.request.form:
             blocks:
-                florentin_garnier_spam_protection: false
+                atriametal_spam_protection: false
 ```
 
 ```yaml
@@ -121,7 +127,7 @@ sylius_ui:
 sylius_twig_hooks:
     hooks:
         sylius_shop.contact.contact_request.content.form:
-            florentin_garnier_spam_protection:
+            atriametal_spam_protection:
                 enabled: false
 ```
 

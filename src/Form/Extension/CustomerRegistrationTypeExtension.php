@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the florentingarnier/sylius-spam-protection-plugin package.
+ * This file is part of the atriametal/sylius-spam-protection-plugin package.
  *
- * (c) Florentin Garnier
+ * (c) Atriametal <contact@kemp.fr>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace FlorentinGarnier\SyliusSpamProtectionPlugin\Form\Extension;
+namespace Atriametal\SyliusSpamProtectionPlugin\Form\Extension;
 
 use FlorentinGarnier\SpamProtectionBundle\Form\SpamProtectionType;
 use Sylius\Bundle\CoreBundle\Form\Type\Customer\CustomerRegistrationType;

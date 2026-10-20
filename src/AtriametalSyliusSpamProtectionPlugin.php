@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the florentingarnier/sylius-spam-protection-plugin package.
+ * This file is part of the atriametal/sylius-spam-protection-plugin package.
  *
- * (c) Florentin Garnier
+ * (c) Atriametal <contact@kemp.fr>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace FlorentinGarnier\SyliusSpamProtectionPlugin;
+namespace Atriametal\SyliusSpamProtectionPlugin;
 
 use Sylius\Bundle\CoreBundle\Application\SyliusPluginTrait;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-final class FlorentinGarnierSyliusSpamProtectionPlugin extends Bundle
+final class AtriametalSyliusSpamProtectionPlugin extends Bundle
 {
     use SyliusPluginTrait;
 

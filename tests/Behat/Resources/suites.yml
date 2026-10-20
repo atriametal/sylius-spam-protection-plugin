@@ -13,7 +13,7 @@ default:
                 - sylius.behat.context.ui.email
                 - sylius.behat.context.ui.shop.contact
 
-                - florentin_garnier_spam_protection.behat.context.spam_protection
+                - atriametal_spam_protection.behat.context.spam_protection
             filters:
                 tags: "@spam_protection_contact"
 
@@ -33,7 +33,7 @@ default:
                 - sylius.behat.context.ui.email
                 - sylius.behat.context.ui.shop.registration
 
-                - florentin_garnier_spam_protection.behat.context.spam_protection
+                - atriametal_spam_protection.behat.context.spam_protection
             filters:
                 tags: "@spam_protection_registration"
 
@@ -53,6 +53,6 @@ default:
                 - sylius.behat.context.ui.email
                 - sylius.behat.context.ui.shop.login
 
-                - florentin_garnier_spam_protection.behat.context.spam_protection
+                - atriametal_spam_protection.behat.context.spam_protection
             filters:
                 tags: "@spam_protection_password_reset"
