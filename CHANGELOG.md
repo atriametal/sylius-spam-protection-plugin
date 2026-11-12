@@ -8,6 +8,12 @@ changes.
 
 ## [Unreleased]
 
+### Removed
+
+- Support for Sylius 2.0: every release of it is affected by the security advisory GHSA-cqw6-3fwg-cfv4, so
+  Composer 2.9 and later refuses to install it. Upgrade to Sylius 2.1 or later, or keep version 0.4 of the
+  plugin.
+
 ## [0.4.0] - 2026-10-20
 
 ### Changed
