@@ -18,6 +18,7 @@ use Atriametal\SyliusSpamProtectionPlugin\Form\Extension\ContactTypeExtension;
 use Atriametal\SyliusSpamProtectionPlugin\Form\Extension\CustomerRegistrationTypeExtension;
 use Atriametal\SyliusSpamProtectionPlugin\Form\Extension\LiveComponentRenderTypeExtension;
 use Atriametal\SyliusSpamProtectionPlugin\Form\Extension\UserRequestPasswordResetTypeExtension;
+use Atriametal\SyliusSpamProtectionPlugin\Mailer\SuspiciousSubmissionSubjectListener;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Sylius\Bundle\CoreBundle\SyliusCoreBundle;
@@ -39,6 +40,17 @@ final class AtriametalSyliusSpamProtectionExtensionTest extends TestCase
         foreach ([ContactTypeExtension::class, CustomerRegistrationTypeExtension::class, UserRequestPasswordResetTypeExtension::class, LiveComponentRenderTypeExtension::class] as $extension) {
             self::assertTrue($container->getDefinition($extension)->hasTag('form.type_extension'), $extension);
         }
+    }
+
+    public function testItFlagsTheSuspiciousContactRequestsBeforeTheyAreSent(): void
+    {
+        $container = new ContainerBuilder();
+
+        (new AtriametalSyliusSpamProtectionExtension())->load([], $container);
+
+        self::assertSame([['event' => 'sylius.email_send.pre_send']], $container->getDefinition(SuspiciousSubmissionSubjectListener::class)->getTag('kernel.event_listener'));
+        self::assertSame('[Spam?] ', $container->getParameter('atriametal_sylius_spam_protection.suspicious_subject_prefix'));
+        self::assertSame(['contact_request'], $container->getParameter('atriametal_sylius_spam_protection.suspicious_email_codes'));
     }
 
     /**
