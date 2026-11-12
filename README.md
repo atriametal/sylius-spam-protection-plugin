@@ -4,7 +4,7 @@
 [![Latest Version](https://img.shields.io/packagist/v/atriametal/sylius-spam-protection-plugin.svg)](https://packagist.org/packages/atriametal/sylius-spam-protection-plugin)
 [![Total Downloads](https://img.shields.io/packagist/dt/atriametal/sylius-spam-protection-plugin.svg)](https://packagist.org/packages/atriametal/sylius-spam-protection-plugin)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-![Sylius](https://img.shields.io/badge/sylius-1.14%20%7C%202.x-1abb9c.svg)
+![Sylius](https://img.shields.io/badge/sylius-1.14%20%7C%202.1%2B-1abb9c.svg)
 
 Protects the public forms of your Sylius shop against spam bots, without reCAPTCHA and without any puzzle for
 your customers. It relies on
@@ -26,15 +26,18 @@ abandoned.
 
 ## Requirements
 
-- Sylius 1.14 or 2.x. Sylius 1.12 and 1.13 are no longer maintained: their dependencies have security advisories that
-  will never be fixed. Use version 0.1 of the plugin with them.
+- Sylius 1.14, or 2.1 and later. The other versions are no longer supported by the plugin:
+  - Sylius 1.12 and 1.13 are no longer maintained, and their dependencies have security advisories that will
+    never be fixed. Use version 0.1 of the plugin with them.
+  - Every release of Sylius 2.0 is affected by the security advisory
+    [GHSA-cqw6-3fwg-cfv4](https://github.com/Sylius/Sylius/security/advisories/GHSA-cqw6-3fwg-cfv4), so Composer
+    2.9 and later refuses to install it. Use version 0.4 of the plugin with it, or upgrade Sylius.
 - PHP 8.2 or later, and Symfony 5.4, 6.4, 7.4 or 8, within the versions supported by your Sylius version (Symfony
   7.0 to 7.3 are not supported by [spam-protection-bundle](https://github.com/FlorentinGarnier/spam-protection-bundle)):
 
   | Sylius | Symfony | PHP |
   |--------|---------|-----|
   | 1.14 | 5.4, 6.4 | 8.2, 8.3 |
-  | 2.0 | 6.4, 7.4 | 8.2, 8.3 |
   | 2.1, 2.2 | 6.4, 7.4 | 8.3 to 8.5 |
   | 2.3 | 6.4, 7.4, 8 | 8.3 to 8.5 (8.4 or later with Symfony 8) |
 
