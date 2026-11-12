@@ -8,6 +8,8 @@ changes.
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-11-12
+
 ### Added
 
 - A contact request linking to another site from a datacenter, a VPN or a Tor exit node is rejected. Links to the
@@ -100,7 +102,8 @@ changes.
   through the shop template events. Supports Sylius 1.12 to 1.14 and requires
   florentingarnier/spam-protection-bundle 0.2.
 
-[Unreleased]: https://github.com/atriametal/sylius-spam-protection-plugin/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/atriametal/sylius-spam-protection-plugin/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/atriametal/sylius-spam-protection-plugin/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/atriametal/sylius-spam-protection-plugin/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/atriametal/sylius-spam-protection-plugin/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/atriametal/sylius-spam-protection-plugin/compare/v0.2.1...v0.3.0
