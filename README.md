@@ -9,8 +9,8 @@
 Protects the public forms of your Sylius shop against spam bots, without reCAPTCHA and without any puzzle for
 your customers. It relies on
 [florentingarnier/spam-protection-bundle](https://github.com/FlorentinGarnier/spam-protection-bundle): a
-honeypot, single-use timed tokens, a proof of work solved by the browser, per-form rate limiting, IP reputation
-and gibberish detection.
+honeypot, single-use timed tokens, a proof of work solved by the browser, per-form rate limiting, IP reputation,
+gibberish detection and the rejection of links sent from datacenters, VPNs and Tor.
 
 | Sylius form | Scope | Free text checked |
 |-------------|-------|-------------------|
@@ -42,6 +42,8 @@ abandoned.
   | 2.3 | 6.4, 7.4, 8 | 8.3 to 8.5 (8.4 or later with Symfony 8) |
 
   These are the combinations tested by Sylius itself, and by the CI of the plugin.
+- `sylius/mailer-bundle` 2, to flag the suspicious contact requests. Sylius 2 requires it; Sylius 1.14 also
+  accepts version 1.8, which the plugin no longer does.
 - JavaScript in the customer's browser
 
 Sylius 1.14 requires `api-platform/core` 2.7, whose releases are all affected by security advisories. Composer 2.9 and later refuses to install them unless your project ignores these advisories, as
@@ -133,6 +135,34 @@ sylius_twig_hooks:
             atriametal_spam_protection:
                 enabled: false
 ```
+
+## Suspicious contact requests
+
+Spam sent by a real browser and worded like a customer's message passes every check. What gives it away is
+where it comes from, a datacenter, a VPN or a Tor exit node, although some customers browse through a VPN too.
+
+- **With a link to another site**, the contact request is rejected. Links to the host of the request are always
+  accepted, and so are those to the `own_hosts` of the
+  [bundle configuration](https://github.com/FlorentinGarnier/spam-protection-bundle#configuration): declare there
+  the other domains of a multi-domain shop.
+- **Without such a link**, it is sent, and flagged for its recipient: `[Spam?] ` is prepended to the subject of
+  the contact e-mail, and the header `X-Spam-Protection-Ip-Risk` gives the risk level (`hosting` or `tor`), for
+  your mailbox rules.
+
+Contact requests sent from any other address are never flagged, whatever they link to.
+
+To change the prefix, or to flag the e-mails that your own protected forms send to the shop:
+
+```yaml
+# config/services.yaml
+parameters:
+    atriametal_sylius_spam_protection.suspicious_subject_prefix: '[Suspect] '
+    atriametal_sylius_spam_protection.suspicious_email_codes: ['contact_request', 'quotation_request']
+```
+
+The codes are those of the e-mails declared in `sylius_mailer.emails`.
+List only e-mails sent to the shop: a customer must not read that you suspect them. An e-mail is flagged when it
+is sent during the request of the visitor, not from a queue consumed later.
 
 ## Protecting other forms
 

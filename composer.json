@@ -24,13 +24,16 @@
     ],
     "require": {
         "php": "^8.2",
-        "florentingarnier/spam-protection-bundle": "^0.2.2",
+        "florentingarnier/spam-protection": "^0.3",
+        "florentingarnier/spam-protection-bundle": "^0.3",
+        "sylius/mailer-bundle": "^2.0",
         "sylius/sylius": "^1.14 || ^2.1",
         "symfony/config": "^5.4.21 || ^6.4 || ^7.4 || ^8.0",
         "symfony/dependency-injection": "^5.4.21 || ^6.4 || ^7.4 || ^8.0",
         "symfony/form": "^5.4.21 || ^6.4 || ^7.4 || ^8.0",
         "symfony/http-foundation": "^5.4.21 || ^6.4 || ^7.4 || ^8.0",
-        "symfony/http-kernel": "^5.4.21 || ^6.4 || ^7.4 || ^8.0"
+        "symfony/http-kernel": "^5.4.21 || ^6.4 || ^7.4 || ^8.0",
+        "symfony/mime": "^5.4.21 || ^6.4 || ^7.4 || ^8.0"
     },
     "require-dev": {
         "behat/behat": "^3.16",

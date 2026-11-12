@@ -8,6 +8,21 @@ changes.
 
 ## [Unreleased]
 
+### Added
+
+- A contact request linking to another site from a datacenter, a VPN or a Tor exit node is rejected. Links to the
+  shop itself are accepted; declare the other domains of a multi-domain shop in `own_hosts`, in the configuration
+  of the bundle.
+- A contact request sent from such an address without external link is flagged: `[Spam?] ` is prepended to the
+  subject of its e-mail, and the header `X-Spam-Protection-Ip-Risk` gives the risk level. The parameters
+  `atriametal_sylius_spam_protection.suspicious_subject_prefix` and
+  `atriametal_sylius_spam_protection.suspicious_email_codes` change the prefix and the flagged e-mails.
+
+### Changed
+
+- Requires florentingarnier/spam-protection-bundle 0.3 and florentingarnier/spam-protection 0.3.
+- Requires sylius/mailer-bundle 2. Shops on Sylius 1.14 with sylius/mailer-bundle 1.8 must upgrade it.
+
 ### Removed
 
 - Support for Sylius 2.0: every release of it is affected by the security advisory GHSA-cqw6-3fwg-cfv4, so
